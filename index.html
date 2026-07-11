@@ -616,7 +616,7 @@
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         @keyframes pulse { 0% { transform: scale(1); text-shadow: 0 0 15px #9d00ff; } 50% { transform: scale(1.03); text-shadow: 0 0 25px #bc66ff, 0 0 10px #ffffff; } 100% { transform: scale(1); text-shadow: 0 0 15px #9d00ff; } }
 
-        @media (max-width: 768px) {
+       @media (max-width: 768px) {
             header { padding: 0 20px; flex-direction: column; height: auto; padding-top: 10px; padding-bottom: 10px; gap: 10px; position: relative; }
             .hero-section { height: auto; padding-top: 40px; }
             .hero-buttons { flex-direction: column; gap: 15px; width: 100%; max-width: 300px; }
@@ -625,11 +625,31 @@
             .description { font-size: 13px; margin-bottom: 30px; }
             .btn-book, .btn-tournament { padding: 15px 20px; font-size: 14px; width: 100%; }
             .scroll-down-indicator { display: none; }
-            .interactive-map-container { border-radius: 8px; }
-            .modal-box { padding: 30px 25px; max-width: 90%; }
+            
+            /* Фикс карты: добавляем горизонтальную прокрутку, чтобы точки не слипались */
+            .map-section { padding: 40px 10px; }
+            .interactive-map-container { 
+                border-radius: 8px; 
+                min-width: 700px; /* Фиксируем минимальную ширину карты для мобильных */
+            }
+            .map-section {
+                overflow-x: auto; /* Включаем скролл для зоны карты */
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* Фиксы модальных окон */
+            .modal-box { padding: 30px 20px; max-width: 90%; }
             .modal-box.prices-width, .modal-box.games-width { max-width: 95%; padding: 20px 10px 20px 20px; }
             .prices-grid, .games-grid { grid-template-columns: 1fr; gap: 15px; }
             .prices-scroll-container, .games-scroll-container, .tournament-scroll-container { max-height: 60vh; padding-right: 8px; }
+
+            /* ФИКС СЛОВА "АДМІНІСТРАТОР" И КРУПНОГО ТЕКСТА (как на скриншоте) */
+            .dev-message { 
+                font-size: 22px; 
+                line-height: 1.4;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
         }
     </style>
 </head>
