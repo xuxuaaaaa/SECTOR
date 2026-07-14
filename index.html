@@ -454,32 +454,41 @@
         .modal-close:hover { color: #ff6666; }
         .modal-title { font-size: 24px; font-weight: bold; letter-spacing: 3px; text-transform: uppercase; color: #bc66ff; text-shadow: 0 0 10px rgba(188, 102, 255, 0.5); margin-bottom: 25px; }
         
-        /* ОКНО ЦЕН И ИГР */
-        .modal-box.prices-width, .modal-box.games-width {
+        /* ОКНО ЦЕН, ИГР И АКЦИЙ */
+        .modal-box.prices-width, .modal-box.games-width, .modal-box.promos-width {
             max-width: 750px;
             padding: 35px 25px 35px 35px;
         }
 
-        .prices-scroll-container, .games-scroll-container, .tournament-scroll-container {
+        .prices-scroll-container, .games-scroll-container, .tournament-scroll-container, .promos-scroll-container {
             max-height: 65vh;
             overflow-y: auto;
             padding-right: 15px;
         }
 
         /* Общие стили скроллбаров внутри окон */
-        .prices-scroll-container::-webkit-scrollbar, .games-scroll-container::-webkit-scrollbar, .tournament-scroll-container::-webkit-scrollbar {
+        .prices-scroll-container::-webkit-scrollbar, .games-scroll-container::-webkit-scrollbar, .tournament-scroll-container::-webkit-scrollbar, .promos-scroll-container::-webkit-scrollbar {
             width: 8px;
         }
-        .prices-scroll-container::-webkit-scrollbar-track, .games-scroll-container::-webkit-scrollbar-track, .tournament-scroll-container::-webkit-scrollbar-track {
+        .prices-scroll-container::-webkit-scrollbar-track, .games-scroll-container::-webkit-scrollbar-track, .tournament-scroll-container::-webkit-scrollbar-track, .promos-scroll-container::-webkit-scrollbar-track {
             background: #140d24;
         }
-        .prices-scroll-container::-webkit-scrollbar-thumb, .games-scroll-container::-webkit-scrollbar-thumb, .tournament-scroll-container::-webkit-scrollbar-thumb {
+        .prices-scroll-container::-webkit-scrollbar-thumb, .games-scroll-container::-webkit-scrollbar-thumb, .tournament-scroll-container::-webkit-scrollbar-thumb, .promos-scroll-container::-webkit-scrollbar-thumb {
             background: #9d00ff;
             border-radius: 4px;
             box-shadow: 0 0 10px #9d00ff;
         }
 
-        .prices-grid, .games-grid {
+        /* Стили для банера цен */
+        .price-banner-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            border: 1px solid rgba(157, 0, 255, 0.3);
+        }
+
+        .games-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
@@ -487,14 +496,14 @@
             text-align: left;
         }
 
-        .price-zone-card, .game-category-card {
+        .game-category-card {
             background: rgba(11, 5, 24, 0.6);
             border: 1px solid rgba(157, 0, 255, 0.4);
             border-radius: 10px;
             padding: 20px;
         }
 
-        .zone-card-title, .category-card-title {
+        .category-card-title {
             font-size: 18px;
             font-weight: 700;
             color: #bc66ff;
@@ -505,17 +514,7 @@
             padding-bottom: 8px;
         }
 
-        .price-row-type {
-            font-size: 12px;
-            text-transform: uppercase;
-            color: #b0a2ca;
-            font-weight: bold;
-            margin-top: 10px;
-            margin-bottom: 5px;
-            letter-spacing: 1px;
-        }
-
-        .price-item-row, .game-item-row {
+        .game-item-row {
             display: flex;
             justify-content: space-between;
             font-size: 14px;
@@ -523,32 +522,9 @@
             border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
         }
 
-        .price-item-row span:last-child {
-            font-weight: bold;
-            color: #dfbfff;
-        }
-
         .game-item-row span {
             color: #dfbfff;
             font-weight: 500;
-        }
-
-        .school-promo-box {
-            background: linear-gradient(90deg, rgba(157, 0, 255, 0.15), rgba(20, 13, 36, 0.8));
-            border: 1px dashed #bc66ff;
-            border-radius: 8px;
-            padding: 15px;
-            text-align: left;
-            margin-top: 5px;
-        }
-
-        .school-promo-title {
-            font-size: 14px;
-            font-weight: bold;
-            color: #bc66ff;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 10px;
         }
 
         /* Контакты и Про нас */
@@ -616,7 +592,7 @@
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         @keyframes pulse { 0% { transform: scale(1); text-shadow: 0 0 15px #9d00ff; } 50% { transform: scale(1.03); text-shadow: 0 0 25px #bc66ff, 0 0 10px #ffffff; } 100% { transform: scale(1); text-shadow: 0 0 15px #9d00ff; } }
 
-       @media (max-width: 768px) {
+        @media (max-width: 768px) {
             header { padding: 0 20px; flex-direction: column; height: auto; padding-top: 10px; padding-bottom: 10px; gap: 10px; position: relative; }
             .hero-section { height: auto; padding-top: 40px; }
             .hero-buttons { flex-direction: column; gap: 15px; width: 100%; max-width: 300px; }
@@ -639,9 +615,9 @@
 
             /* Фиксы модальных окон */
             .modal-box { padding: 30px 20px; max-width: 90%; }
-            .modal-box.prices-width, .modal-box.games-width { max-width: 95%; padding: 20px 10px 20px 20px; }
-            .prices-grid, .games-grid { grid-template-columns: 1fr; gap: 15px; }
-            .prices-scroll-container, .games-scroll-container, .tournament-scroll-container { max-height: 60vh; padding-right: 8px; }
+            .modal-box.prices-width, .modal-box.games-width, .modal-box.promos-width { max-width: 95%; padding: 20px 10px 20px 20px; }
+            .games-grid { grid-template-columns: 1fr; gap: 15px; }
+            .prices-scroll-container, .games-scroll-container, .tournament-scroll-container, .promos-scroll-container { max-height: 60vh; padding-right: 8px; }
 
             /* ФИКС СЛОВА "АДМІНІСТРАТОР" И КРУПНОГО ТЕКСТА (как на скриншоте) */
             .dev-message { 
@@ -664,6 +640,7 @@
                 <li><button class="nav-link" onclick="openSection('Про нас')">Про нас</button></li>
                 <li><button class="nav-link" onclick="openSection('Ігри')">Ігри</button></li>
                 <li><button class="nav-link" onclick="openSection('Ціни')">Ціни</button></li>
+                <li><button class="nav-link" onclick="openSection('Акції')">Акції</button></li>
                 <li><button class="nav-link" onclick="openSection('Контакти')">Контакти</button></li>
             </ul>
         </nav>
@@ -768,7 +745,7 @@
             <div class="modal-title">Наші Контакти</div>
             <div class="contacts-list">
                 <div class="contact-item">
-                    <div class="contact-label">Телефон адміністратора</div>
+                    <div class="contact-label">Телефон администратора</div>
                     <a href="tel:+380939451862" class="contact-value">+380 (93) 945-18-62</a>
                 </div>
                 <div class="contact-item">
@@ -783,100 +760,15 @@
         </div>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО ЦЕН С ВНУТРЕННИМ СКРОЛЛОМ -->
+    <!-- МОДАЛЬНОЕ ОКНО ЦЕН С БАННЕРОМ -->
     <div id="prices-modal" class="modal-back" onclick="togglePricesModal(false)">
         <div class="modal-box prices-width" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="togglePricesModal(false)">&times;</button>
             <div class="modal-title">Прайс-лист</div>
             
             <div class="prices-scroll-container">
-                <div class="prices-grid">
-                    <!-- Стандарт -->
-                    <div class="price-zone-card">
-                        <div class="zone-card-title">Стандарт</div>
-                        <div class="price-row-type">Будні дні</div>
-                        <div class="price-item-row"><span>Стандарт 1 год</span><span>70 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет 3 год</span><span>190 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет 5 год</span><span>330 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет Ніч</span><span>400 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет Ранок / Школяр</span><span>160 ₴</span></div>
-                        
-                        <div class="price-row-type">Вихідні дні</div>
-                        <div class="price-item-row"><span>Стандарт 1 год</span><span>85 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет 3 год</span><span>235 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет 5 год</span><span>375 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет Ніч</span><span>425 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет Ранок</span><span>210 ₴</span></div>
-                    </div>
-
-                    <!-- Про Зона -->
-                    <div class="price-zone-card">
-                        <div class="zone-card-title">Pro Zone</div>
-                        <div class="price-row-type">Будні дні</div>
-                        <div class="price-item-row"><span>Про зона 1 год</span><span>90 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет 3 год</span><span>240 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет 5 год</span><span>425 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет Ніч</span><span>550 ₴</span></div>
-                        
-                        <div class="price-row-type">Вихідні дні</div>
-                        <div class="price-item-row"><span>Про зона 1 год</span><span>100 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет 3 год</span><span>270 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет 5 год</span><span>470 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет Ніч</span><span>600 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет Ранок</span><span>220 ₴</span></div>
-                    </div>
-
-                    <!-- Буткемп -->
-                    <div class="price-zone-card">
-                        <div class="zone-card-title">Bootcamp</div>
-                        <div class="price-row-type">Будні дні</div>
-                        <div class="price-item-row"><span>Буткемп 1 год</span><span>125 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет 3 год</span><span>340 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет 5 год</span><span>550 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет Ніч</span><span>750 ₴</span></div>
-                        
-                        <div class="price-row-type">Вихідні дні</div>
-                        <div class="price-item-row"><span>Буткемп 1 год</span><span>145 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет 3 год</span><span>400 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет 5 год</span><span>650 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет Ніч</span><span>850 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет Ранок</span><span>345 ₴</span></div>
-                    </div>
-
-                    <!-- Буткемп + -->
-                    <div class="price-zone-card">
-                        <div class="zone-card-title">Bootcamp +</div>
-                        <div class="price-row-type">Будні дні</div>
-                        <div class="price-item-row"><span>Буткемп+ 1 год</span><span>150 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет 3 год</span><span>395 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет 5 год</span><span>595 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет Ніч</span><span>850 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет Ранок</span><span>375 ₴</span></div>
-                        
-                        <div class="price-row-type">Вихідні дні</div>
-                        <div class="price-item-row"><span>Буткемп+ 1 год</span><span>170 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет 3 год</span><span>485 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет 5 год</span><span>745 ₴</span></div>
-                        <div class="price-item-row"><span>Пакет Ніч</span><span>950 ₴</span></div>
-                    </div>
-                </div>
-
-                <!-- Специальный пакет "Школьник" -->
-                <div class="school-promo-box">
-                    <div class="school-promo-title">Пакет "Школяр" (діє в будь-який день)</div>
-                    <div class="prices-grid" style="grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 0;">
-                        <div>
-                            <div class="price-item-row"><span>Стандарт</span><span>160 ₴</span></div>
-                            <div class="price-item-row"><span>Pro Zone</span><span>180 ₴</span></div>
-                        </div>
-                        <div>
-                            <div class="price-item-row"><span>Bootcamp</span><span>250 ₴</span></div>
-                            <div class="price-item-row"><span>Bootcamp +</span><span>300 ₴</span></div>
-                        </div>
-                    </div>
-                </div>
+                <img src="price.jpg" alt="Прайс-лист кіберклубу Sector" class="price-banner-img">
             </div>
-
         </div>
     </div>
 
@@ -934,6 +826,50 @@
                         <div class="category-card-title">Ігри на PS</div>
                         <div class="game-item-row"><span>UFC - 3</span></div>
                         <div class="game-item-row"><span>Gta 6 - 1</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО АКЦИЙ С ВНУТРЕННИМ СКРОЛЛОМ -->
+    <div id="promos-modal" class="modal-back" onclick="togglePromosModal(false)">
+        <div class="modal-box promos-width" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="togglePromosModal(false)">&times;</button>
+            <div class="modal-title">Акції та Пропозиції</div>
+            
+            <div class="promos-scroll-container">
+                <div class="games-grid">
+                    <!-- Акция 1 -->
+                    <div class="game-category-card">
+                        <div class="category-card-title">Приведи друга</div>
+                        <p style="font-size: 14px; color: #cdcae0; line-height: 1.6; margin-top: 10px;">
+                            Приводь друга, який ще не грав у нашому клубі, та отримуйте по 1 безкоштовній годині на ігровий баланс!
+                        </p>
+                    </div>
+
+                    <!-- Акция 2 -->
+                    <div class="game-category-card">
+                        <div class="category-card-title">УБД</div>
+                        <p style="font-size: 14px; color: #cdcae0; line-height: 1.6; margin-top: 10px;">
+                            Знижка військовим 10% на все.
+                        </p>
+                    </div>
+
+                    <!-- Акция 3 -->
+                    <div class="game-category-card">
+                        <div class="category-card-title">День Народження</div>
+                        <p style="font-size: 14px; color: #cdcae0; line-height: 1.6; margin-top: 10px;">
+                            Даруємо знижку 50% на будь-який пакет послуг у твій День народження та протягом 3-х днів після нього (за наявності паспорта або Дії).
+                        </p>
+                    </div>
+
+                    <!-- Акция 4 -->
+                    <div class="game-category-card">
+                        <div class="category-card-title">Ранковий Буст</div>
+                        <p style="font-size: 14px; color: #cdcae0; line-height: 1.6; margin-top: 10px;">
+                            Грай довше на початку дня: при оплаті 2-х годин гри у будь-якій зоні — 3-тя година у подарунок!
+                        </p>
                     </div>
                 </div>
             </div>
@@ -1080,6 +1016,7 @@
         const contactsModal = document.getElementById('contacts-modal');
         const pricesModal = document.getElementById('prices-modal');
         const gamesModal = document.getElementById('games-modal');
+        const promosModal = document.getElementById('promos-modal');
         const tournamentModal = document.getElementById('tournament-modal');
 
         const formContainer = document.getElementById('booking-form-container');
@@ -1104,6 +1041,7 @@
             if (sectionName === 'Про нас') { toggleAboutModal(true); return; }
             if (sectionName === 'Ігри') { toggleGamesModal(true); return; }
             if (sectionName === 'Ціни') { togglePricesModal(true); return; }
+            if (sectionName === 'Акції') { togglePromosModal(true); return; }
             if (sectionName === 'Контакти') { toggleContactsModal(true); return; }
 
             if (currentActiveSection === sectionName) {
@@ -1120,6 +1058,7 @@
         function toggleContactsModal(show) { show ? contactsModal.classList.add('active') : contactsModal.classList.remove('active'); }
         function togglePricesModal(show) { show ? (pricesModal.classList.add('active'), document.querySelector('.prices-scroll-container').scrollTop = 0) : pricesModal.classList.remove('active'); }
         function toggleGamesModal(show) { show ? (gamesModal.classList.add('active'), document.querySelector('.games-scroll-container').scrollTop = 0) : gamesModal.classList.remove('active'); }
+        function togglePromosModal(show) { show ? (promosModal.classList.add('active'), document.querySelector('.promos-scroll-container').scrollTop = 0) : promosModal.classList.remove('active'); }
 
         function toggleModal(show) {
             if (show) {
@@ -1218,7 +1157,7 @@
             })
             .catch(error => {
                 console.error('Помилка!', error);
-                alert('Сталася помилка. Будь ласка, спробуйте ще раз.');
+                alert('Сталася ошибка. Будь ласка, спробуйте ще раз.');
                 submitBtn.disabled = false;
                 submitBtn.innerText = "Забронювати";
             });
@@ -1274,6 +1213,7 @@
                 toggleContactsModal(false);
                 togglePricesModal(false);
                 toggleGamesModal(false);
+                togglePromosModal(false);
                 toggleTournamentModal(false);
                 overlay.classList.remove('active');
                 currentActiveSection = null;
@@ -1286,6 +1226,7 @@
             toggleContactsModal(false);
             togglePricesModal(false);
             toggleGamesModal(false);
+            togglePromosModal(false);
             toggleTournamentModal(false);
             currentActiveSection = null;        
             window.scrollTo({ top: 0, behavior: 'smooth' });
