@@ -69,7 +69,7 @@
         }
         
         .logo img {
-            height: 110px;
+            height: 120px;
             object-fit: contain;
             filter: drop-shadow(0 0 8px rgba(157, 0, 255, 0.6));
         }
@@ -610,14 +610,14 @@
         @keyframes pulse { 0% { transform: scale(1); text-shadow: 0 0 15px #9d00ff; } 50% { transform: scale(1.03); text-shadow: 0 0 25px #bc66ff, 0 0 10px #ffffff; } 100% { transform: scale(1); text-shadow: 0 0 15px #9d00ff; } }
 
         @media (max-width: 768px) {
-            /* Фіксований header на мобільних, щоб не «гуляв» */
+            /* Фіксуємо header вгорі екрана без "дірок" */
             header { 
                 padding: 0 15px; 
                 flex-direction: column; 
                 height: auto; 
-                padding-top: 8px; 
-                padding-bottom: 8px; 
-                gap: 5px; 
+                padding-top: 10px; 
+                padding-bottom: 10px; 
+                gap: 8px; 
                 position: fixed; 
                 top: 0;
                 left: 0;
@@ -625,41 +625,32 @@
             }
 
             .logo img {
-                height: 80px; /* Трохи зменшуємо логотип на мобільних */
+                height: 70px; /* Зменшуємо логотип для мобільних екранів */
             }
 
-            /* Контейнер для навігації з можливістю свайпу, якщо екран надто вузький */
+            /* Робимо навігацію адаптивною без розпирання екрана */
             nav {
                 width: 100%;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                padding-bottom: 4px;
-            }
-
-            /* Прибираємо смугу прокручування в меню для естетики */
-            nav::-webkit-scrollbar {
-                display: none;
             }
 
             nav ul {
-                gap: 16px; /* Зменшуємо проміжки між кнопками */
+                gap: 15px; /* Зменшуємо занадто великі проміжки */
                 justify-content: center;
-                flex-wrap: nowrap; /* Забороняємо перенос на новий рядок */
-                width: max-content; /* Дозволяє меню розтягуватися під скролл, якщо треба */
-                margin: 0 auto;
-                padding: 0 10px;
+                flex-wrap: wrap; /* Дозволяємо кнопкам красиво переноситися, якщо екран дуже вузький */
+                padding: 0;
             }
 
             .nav-link {
-                font-size: 11px; /* Компактний розмір шрифту */
-                letter-spacing: 1px; /* Менший інтервал, щоб текст не розповзався */
-                white-space: nowrap; /* Запобігає переносу слів у кнопці «Про нас» */
+                font-size: 11px; /* Компактніший шрифт для мобілок */
+                letter-spacing: 1px; /* Коригуємо інтервал */
+                white-space: nowrap;
             }
 
-            /* Коригуємо відступ зверху для першого екрана, оскільки header тепер FIXED */
+            /* Коригуємо відступ першого блоку, щоб шапка його не перекривала */
             .hero-section { 
                 height: auto; 
-                padding-top: 150px; /* Щоб контент не перекривався фіксованим меню */
+                min-height: 100vh;
+                padding-top: 150px; /* Створює плавний відступ під фіксований header */
                 padding-bottom: 60px;
             }
 
@@ -670,25 +661,25 @@
             .btn-book, .btn-tournament { padding: 15px 20px; font-size: 14px; width: 100%; }
             .scroll-down-indicator { display: none; }
             
-            /* Фікс карти: додаємо горизонтальну прокрутку, щоб точки не слипались */
+            /* Фікс карти: додаємо горизонтальну прокрутку, щоб точки не злипались */
             .map-section { padding: 40px 10px; }
             .interactive-map-container { 
                 border-radius: 8px; 
                 min-width: 700px; /* Фіксуємо мінімальну ширину карти для мобільних */
             }
             .map-section {
-                overflow-x: auto; /* Включаем скролл для зоны карты */
+                overflow-x: auto; /* Вмикаємо скролл для зони карти */
                 -webkit-overflow-scrolling: touch;
             }
 
-            /* Фиксы модальных окон */
+            /* Фікси модальних вікон */
             .modal-box { padding: 30px 20px; max-width: 90%; }
             .modal-box.prices-width, .modal-box.games-width, .modal-box.promos-width, .modal-box.about-width { max-width: 95%; padding: 20px 10px 20px 20px; }
             .games-grid { grid-template-columns: 1fr; gap: 15px; }
             .prices-scroll-container, .games-scroll-container, .tournament-scroll-container, .promos-scroll-container, .about-scroll-container { max-height: 60vh; padding-right: 8px; }
             .specs-grid { grid-template-columns: 100px 1fr; font-size: 13px; }
 
-            /* ФИКС СЛОВА "АДМІНІСТРАТОР" И КРУПНОГО ТЕКСТА */
+            /* ФІКС СЛОВА "АДМІНІСТРАТОР" И ВЕЛИКОГО ТЕКСТУ */
             .dev-message { 
                 font-size: 22px; 
                 line-height: 1.4;
