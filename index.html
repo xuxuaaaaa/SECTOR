@@ -454,26 +454,26 @@
         .modal-close:hover { color: #ff6666; }
         .modal-title { font-size: 24px; font-weight: bold; letter-spacing: 3px; text-transform: uppercase; color: #bc66ff; text-shadow: 0 0 10px rgba(188, 102, 255, 0.5); margin-bottom: 25px; }
         
-        /* ОКНО ЦЕН, ИГР И АКЦИЙ */
-        .modal-box.prices-width, .modal-box.games-width, .modal-box.promos-width {
+        /* ОКНО ЦЕН, ИГР, АКЦИЙ И ПРО НАС */
+        .modal-box.prices-width, .modal-box.games-width, .modal-box.promos-width, .modal-box.about-width {
             max-width: 750px;
             padding: 35px 25px 35px 35px;
         }
 
-        .prices-scroll-container, .games-scroll-container, .tournament-scroll-container, .promos-scroll-container {
+        .prices-scroll-container, .games-scroll-container, .tournament-scroll-container, .promos-scroll-container, .about-scroll-container {
             max-height: 65vh;
             overflow-y: auto;
             padding-right: 15px;
         }
 
         /* Общие стили скроллбаров внутри окон */
-        .prices-scroll-container::-webkit-scrollbar, .games-scroll-container::-webkit-scrollbar, .tournament-scroll-container::-webkit-scrollbar, .promos-scroll-container::-webkit-scrollbar {
+        .prices-scroll-container::-webkit-scrollbar, .games-scroll-container::-webkit-scrollbar, .tournament-scroll-container::-webkit-scrollbar, .promos-scroll-container::-webkit-scrollbar, .about-scroll-container::-webkit-scrollbar {
             width: 8px;
         }
-        .prices-scroll-container::-webkit-scrollbar-track, .games-scroll-container::-webkit-scrollbar-track, .tournament-scroll-container::-webkit-scrollbar-track, .promos-scroll-container::-webkit-scrollbar-track {
+        .prices-scroll-container::-webkit-scrollbar-track, .games-scroll-container::-webkit-scrollbar-track, .tournament-scroll-container::-webkit-scrollbar-track, .promos-scroll-container::-webkit-scrollbar-track, .about-scroll-container::-webkit-scrollbar-track {
             background: #140d24;
         }
-        .prices-scroll-container::-webkit-scrollbar-thumb, .games-scroll-container::-webkit-scrollbar-thumb, .tournament-scroll-container::-webkit-scrollbar-thumb, .promos-scroll-container::-webkit-scrollbar-thumb {
+        .prices-scroll-container::-webkit-scrollbar-thumb, .games-scroll-container::-webkit-scrollbar-thumb, .tournament-scroll-container::-webkit-scrollbar-thumb, .promos-scroll-container::-webkit-scrollbar-thumb, .about-scroll-container::-webkit-scrollbar-thumb {
             background: #9d00ff;
             border-radius: 4px;
             box-shadow: 0 0 10px #9d00ff;
@@ -532,8 +532,25 @@
         .contact-item, .about-item { background: rgba(11, 5, 24, 0.6); border: 1px solid rgba(157, 0, 255, 0.3); border-radius: 8px; padding: 15px; transition: all 0.3s ease; }
         .contact-item:hover, .about-item:hover { border-color: #bc66ff; box-shadow: 0 0 15px rgba(188, 102, 255, 0.2); background: rgba(20, 13, 36, 0.8); }
         .contact-label, .about-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #b0a2ca; margin-bottom: 5px; }
+        .about-label-specs { font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; color: #bc66ff; margin-bottom: 10px; border-bottom: 1px solid rgba(157, 0, 255, 0.2); padding-bottom: 5px; }
         .contact-value, .about-value { font-size: 16px; font-weight: 500; color: #ffffff; text-decoration: none; transition: color 0.2s; line-height: 1.5; }
         .contact-value[href]:hover { color: #dfbfff; text-shadow: 0 0 8px #9d00ff; }
+        
+        /* Стили для характеристик железа */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 6px 12px;
+            font-size: 14px;
+            color: #cdcae0;
+        }
+        .spec-title {
+            color: #b0a2ca;
+            font-weight: 600;
+        }
+        .spec-value {
+            color: #ffffff;
+        }
 
         /* Формы */
         .booking-form, .tournament-form { display: flex; flex-direction: column; gap: 20px; text-align: left; }
@@ -593,8 +610,59 @@
         @keyframes pulse { 0% { transform: scale(1); text-shadow: 0 0 15px #9d00ff; } 50% { transform: scale(1.03); text-shadow: 0 0 25px #bc66ff, 0 0 10px #ffffff; } 100% { transform: scale(1); text-shadow: 0 0 15px #9d00ff; } }
 
         @media (max-width: 768px) {
-            header { padding: 0 20px; flex-direction: column; height: auto; padding-top: 10px; padding-bottom: 10px; gap: 10px; position: relative; }
-            .hero-section { height: auto; padding-top: 40px; }
+            /* Фіксований header на мобільних, щоб не «гуляв» */
+            header { 
+                padding: 0 15px; 
+                flex-direction: column; 
+                height: auto; 
+                padding-top: 8px; 
+                padding-bottom: 8px; 
+                gap: 5px; 
+                position: fixed; 
+                top: 0;
+                left: 0;
+                width: 100%;
+            }
+
+            .logo img {
+                height: 80px; /* Трохи зменшуємо логотип на мобільних */
+            }
+
+            /* Контейнер для навігації з можливістю свайпу, якщо екран надто вузький */
+            nav {
+                width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 4px;
+            }
+
+            /* Прибираємо смугу прокручування в меню для естетики */
+            nav::-webkit-scrollbar {
+                display: none;
+            }
+
+            nav ul {
+                gap: 16px; /* Зменшуємо проміжки між кнопками */
+                justify-content: center;
+                flex-wrap: nowrap; /* Забороняємо перенос на новий рядок */
+                width: max-content; /* Дозволяє меню розтягуватися під скролл, якщо треба */
+                margin: 0 auto;
+                padding: 0 10px;
+            }
+
+            .nav-link {
+                font-size: 11px; /* Компактний розмір шрифту */
+                letter-spacing: 1px; /* Менший інтервал, щоб текст не розповзався */
+                white-space: nowrap; /* Запобігає переносу слів у кнопці «Про нас» */
+            }
+
+            /* Коригуємо відступ зверху для першого екрана, оскільки header тепер FIXED */
+            .hero-section { 
+                height: auto; 
+                padding-top: 150px; /* Щоб контент не перекривався фіксованим меню */
+                padding-bottom: 60px;
+            }
+
             .hero-buttons { flex-direction: column; gap: 15px; width: 100%; max-width: 300px; }
             .main-title { font-size: 45px; }
             .sub-title { font-size: 16px; }
@@ -602,11 +670,11 @@
             .btn-book, .btn-tournament { padding: 15px 20px; font-size: 14px; width: 100%; }
             .scroll-down-indicator { display: none; }
             
-            /* Фикс карты: добавляем горизонтальную прокрутку, чтобы точки не слипались */
+            /* Фікс карти: додаємо горизонтальну прокрутку, щоб точки не слипались */
             .map-section { padding: 40px 10px; }
             .interactive-map-container { 
                 border-radius: 8px; 
-                min-width: 700px; /* Фиксируем минимальную ширину карты для мобильных */
+                min-width: 700px; /* Фіксуємо мінімальну ширину карти для мобільних */
             }
             .map-section {
                 overflow-x: auto; /* Включаем скролл для зоны карты */
@@ -615,11 +683,12 @@
 
             /* Фиксы модальных окон */
             .modal-box { padding: 30px 20px; max-width: 90%; }
-            .modal-box.prices-width, .modal-box.games-width, .modal-box.promos-width { max-width: 95%; padding: 20px 10px 20px 20px; }
+            .modal-box.prices-width, .modal-box.games-width, .modal-box.promos-width, .modal-box.about-width { max-width: 95%; padding: 20px 10px 20px 20px; }
             .games-grid { grid-template-columns: 1fr; gap: 15px; }
-            .prices-scroll-container, .games-scroll-container, .tournament-scroll-container, .promos-scroll-container { max-height: 60vh; padding-right: 8px; }
+            .prices-scroll-container, .games-scroll-container, .tournament-scroll-container, .promos-scroll-container, .about-scroll-container { max-height: 60vh; padding-right: 8px; }
+            .specs-grid { grid-template-columns: 100px 1fr; font-size: 13px; }
 
-            /* ФИКС СЛОВА "АДМІНІСТРАТОР" И КРУПНОГО ТЕКСТА (как на скриншоте) */
+            /* ФИКС СЛОВА "АДМІНІСТРАТОР" И КРУПНОГО ТЕКСТА */
             .dev-message { 
                 font-size: 22px; 
                 line-height: 1.4;
@@ -722,17 +791,67 @@
 
     <!-- МОДАЛЬНОЕ ОКНО ПРО НАС -->
     <div id="about-modal" class="modal-back" onclick="toggleAboutModal(false)">
-        <div class="modal-box" onclick="event.stopPropagation()">
+        <div class="modal-box about-width" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="toggleAboutModal(false)">&times;</button>
             <div class="modal-title">Про наш клуб</div>
-            <div class="about-list">
-                <div class="about-item">
-                    <div class="about-label">Ласкаво просимо в SECTOR</div>
-                    <div class="about-value">Ми — сучасний кіберспортивний простір, створений геймерами для геймерів. Наша мета — надати найкращі умови для тренувань, відпочинку та командних батарей.</div>
-                </div>
-                <div class="about-item">
-                    <div class="about-label">Атмосфера та Комфорт</div>
-                    <div class="about-value">Професійні ігрові крісла, топова периферія та продумана вентиляція. Працюємо для вас цілодобово 24/7 без перерв та вихідних!</div>
+            
+            <div class="about-scroll-container">
+                <div class="about-list">
+                    <div class="about-item">
+                        <div class="about-label">Ласкаво просимо в SECTOR</div>
+                        <div class="about-value">Ми — сучасний кіберспортивний простір, створений геймерами для геймерів. Наша мета — надати найкращі умови для тренувань, відпочинку та командних батарей.</div>
+                    </div>
+                    <div class="about-item">
+                        <div class="about-label">Атмосфера та Комфорт</div>
+                        <div class="about-value">Професійні ігрові крісла, топова периферія та продумана вентиляція. Працюємо для вас цілодобово 24/7 без перерв та вихідних!</div>
+                    </div>
+                    
+                    <!-- ХАРАКТЕРИСТИКИ ЗОН -->
+                    <div class="about-item">
+                        <div class="about-label-specs">PC GAMER ZONE</div>
+                        <div class="specs-grid">
+                            <div class="spec-title">Процесор:</div><div class="spec-value">AMD Ryzen 5 5500</div>
+                            <div class="spec-title">Відеокарта:</div><div class="spec-value">RTX 5060</div>
+                            <div class="spec-title">ОЗУ:</div><div class="spec-value">16 GB DDR4 (3200Mhz)</div>
+                            <div class="spec-title">Монітор:</div><div class="spec-value">MSI MAG 242F (24/27", 200Hz, IPS, FULL HD)</div>
+                            <div class="spec-title">Мишка:</div><div class="spec-value">Proove Gaming Jester 8K Black</div>
+                            <div class="spec-title">Клавіатура:</div><div class="spec-value">Proove Gaming Slicker Special Edition BLACK / PURPLE (Бездротова)</div>
+                            <div class="spec-title">Навушники:</div><div class="spec-value">Proove Gaming Rapture Black</div>
+                        </div>
+                    </div>
+
+                    <div class="about-item">
+                        <div class="about-label-specs">PRO ZONE</div>
+                        <div class="specs-grid">
+                            <div class="spec-title">Процесор:</div><div class="spec-value">5500X3D</div>
+                            <div class="spec-title">Відеокарта:</div><div class="spec-value">RTX 5060</div>
+                            <div class="spec-title">ОЗУ:</div><div class="spec-value">DDR4 16 GB (можливе збільшення до 32 GB)</div>
+                            <div class="spec-title">Монітор:</div><div class="spec-value">Acer 27" VG272UW2bmiipx (IPS, Black, 240Hz)</div>
+                            <div class="spec-title">Мишка:</div><div class="spec-value">Proove Gaming Jester 8K</div>
+                            <div class="spec-title">Клавіатура:</div><div class="spec-value">Proove Gaming Slicker PRO Black/Purple (Бездротова)</div>
+                            <div class="spec-title">Навушники:</div><div class="spec-value">Proove Gaming Rapture</div>
+                        </div>
+                    </div>
+
+                    <div class="about-item">
+                        <div class="about-label-specs">BOOTCAMP</div>
+                        <div class="specs-grid">
+                            <div class="spec-title">Процесор:</div><div class="spec-value">AMD Ryzen 5 7500X3D</div>
+                            <div class="spec-title">Відеокарта:</div><div class="spec-value">5060 TI 8 GB</div>
+                            <div class="spec-title">ОЗУ:</div><div class="spec-value">DDR5 16GB (можливе збільшення до 32 GB)</div>
+                            <div class="spec-title">Монітор:</div><div class="spec-value">Acer Predator XB253QFbmiiprx (24", 300Hz, IPS)</div>
+                        </div>
+                    </div>
+
+                    <div class="about-item">
+                        <div class="about-label-specs">PRO BOOTCAMP</div>
+                        <div class="specs-grid">
+                            <div class="spec-title">Процесор:</div><div class="spec-value">R7 7700</div>
+                            <div class="spec-title">Відеокарта:</div><div class="spec-value">RTX 5070</div>
+                            <div class="spec-title">ОЗУ:</div><div class="spec-value">DDR5 32 GB</div>
+                            <div class="spec-title">Монітор:</div><div class="spec-value">Acer Nitro XF273UF3bmiiprx (27", 300Hz, IPS)</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -754,7 +873,7 @@
                 </div>
                 <div class="contact-item">
                     <div class="contact-label">Адреса клубу</div>
-                    <div class="contact-value">м. Самар</div>
+                    <div class="contact-value">м. Самар, Паланкова 41</div>
                 </div>
             </div>
         </div>
@@ -836,7 +955,7 @@
     <div id="promos-modal" class="modal-back" onclick="togglePromosModal(false)">
         <div class="modal-box promos-width" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="togglePromosModal(false)">&times;</button>
-            <div class="modal-title">Акції та Пропозиції</div>
+            <div class="modal-title">Accumulate та Пропозиції</div>
             
             <div class="promos-scroll-container">
                 <div class="games-grid">
@@ -852,7 +971,7 @@
                     <div class="game-category-card">
                         <div class="category-card-title">УБД</div>
                         <p style="font-size: 14px; color: #cdcae0; line-height: 1.6; margin-top: 10px;">
-                            Знижка військовим 10% на все.
+                            Знижка військовим на усе 10%.
                         </p>
                     </div>
 
@@ -1054,7 +1173,7 @@
             }
         }
 
-        function toggleAboutModal(show) { show ? aboutModal.classList.add('active') : aboutModal.classList.remove('active'); }
+        function toggleAboutModal(show) { show ? (aboutModal.classList.add('active'), document.querySelector('.about-scroll-container').scrollTop = 0) : aboutModal.classList.remove('active'); }
         function toggleContactsModal(show) { show ? contactsModal.classList.add('active') : contactsModal.classList.remove('active'); }
         function togglePricesModal(show) { show ? (pricesModal.classList.add('active'), document.querySelector('.prices-scroll-container').scrollTop = 0) : pricesModal.classList.remove('active'); }
         function toggleGamesModal(show) { show ? (gamesModal.classList.add('active'), document.querySelector('.games-scroll-container').scrollTop = 0) : gamesModal.classList.remove('active'); }
