@@ -610,14 +610,14 @@
         @keyframes pulse { 0% { transform: scale(1); text-shadow: 0 0 15px #9d00ff; } 50% { transform: scale(1.03); text-shadow: 0 0 25px #bc66ff, 0 0 10px #ffffff; } 100% { transform: scale(1); text-shadow: 0 0 15px #9d00ff; } }
 
         @media (max-width: 768px) {
-            /* Фіксуємо header вгорі екрана без "дірок" */
+            /* Фиксируем header вверху экрана без "дыр" */
             header { 
                 padding: 0 15px; 
                 flex-direction: column; 
                 height: auto; 
-                padding-top: 10px; 
-                padding-bottom: 10px; 
-                gap: 8px; 
+                padding-top: 8px; 
+                padding-bottom: 8px; 
+                gap: 4px; /* Уменьшили зазор между логотипом и меню */
                 position: fixed; 
                 top: 0;
                 left: 0;
@@ -625,32 +625,32 @@
             }
 
             .logo img {
-                height: 180px; /* Зменшуємо логотип для мобільних екранів */
+                height: 55px; /* Значительно уменьшаем логотип для мобильных (было 110px) */
             }
 
-            /* Робимо навігацію адаптивною без розпирання екрана */
+            /* Делаем навигацию адаптивной без распирания экрана */
             nav {
                 width: 100%;
             }
 
             nav ul {
-                gap: 15px; /* Зменшуємо занадто великі проміжки */
+                gap: 12px; /* Компактные промежутки между ссылками */
                 justify-content: center;
-                flex-wrap: wrap; /* Дозволяємо кнопкам красиво переноситися, якщо екран дуже вузький */
+                flex-wrap: wrap; 
                 padding: 0;
             }
 
             .nav-link {
-                font-size: 11px; /* Компактніший шрифт для мобілок */
-                letter-spacing: 1px; /* Коригуємо інтервал */
+                font-size: 11px; 
+                letter-spacing: 1px; 
                 white-space: nowrap;
             }
 
-            /* Коригуємо відступ першого блоку, щоб шапка його не перекривала */
+            /* Корректируем отступ первого блока, чтобы он не уезжал слишком далеко вниз */
             .hero-section { 
                 height: auto; 
                 min-height: 100vh;
-                padding-top: 150px; /* Створює плавний відступ під фіксований header */
+                padding-top: 110px; /* Уменьшили отступ сверху, так как шапка стала ниже */
                 padding-bottom: 60px;
             }
 
@@ -661,25 +661,25 @@
             .btn-book, .btn-tournament { padding: 15px 20px; font-size: 14px; width: 100%; }
             .scroll-down-indicator { display: none; }
             
-            /* Фікс карти: додаємо горизонтальну прокрутку, щоб точки не злипались */
+            /* Фикс карты */
             .map-section { padding: 40px 10px; }
             .interactive-map-container { 
                 border-radius: 8px; 
-                min-width: 700px; /* Фіксуємо мінімальну ширину карти для мобільних */
+                min-width: 700px; 
             }
             .map-section {
-                overflow-x: auto; /* Вмикаємо скролл для зони карти */
+                overflow-x: auto; 
                 -webkit-overflow-scrolling: touch;
             }
 
-            /* Фікси модальних вікон */
+            /* Фиксы модальных окон */
             .modal-box { padding: 30px 20px; max-width: 90%; }
             .modal-box.prices-width, .modal-box.games-width, .modal-box.promos-width, .modal-box.about-width { max-width: 95%; padding: 20px 10px 20px 20px; }
             .games-grid { grid-template-columns: 1fr; gap: 15px; }
             .prices-scroll-container, .games-scroll-container, .tournament-scroll-container, .promos-scroll-container, .about-scroll-container { max-height: 60vh; padding-right: 8px; }
             .specs-grid { grid-template-columns: 100px 1fr; font-size: 13px; }
 
-            /* ФІКС СЛОВА "АДМІНІСТРАТОР" И ВЕЛИКОГО ТЕКСТУ */
+            /* ФИКС СЛОВА "АДМИНИСТРАТОР" И КРУПНОГО ТЕКСТА */
             .dev-message { 
                 font-size: 22px; 
                 line-height: 1.4;
