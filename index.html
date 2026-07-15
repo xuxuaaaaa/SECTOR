@@ -44,7 +44,6 @@
         }
 
         /* --- ФИКС НАВИГАЦИОННОЙ ПАНЕЛИ --- */
-       /* --- ФИКС НАВИГАЦИОННОЙ ПАНЕЛИ --- */
         header {
             display: flex;
             justify-content: space-between;
@@ -75,7 +74,7 @@
             top: 50%;
             transform: translateY(-50%); /* Идеально центрируем по вертикали */
             left: 0;
-            height: 120px; /* Твой увеличенный размер логотипа (можешь делать хоть 130px-140px!) */
+            height: 120px; /* Твой увеличенный размер логотипа */
             object-fit: contain;
             filter: drop-shadow(0 0 8px rgba(157, 0, 255, 0.6));
             z-index: 105; /* Картинка будет красиво ложиться поверх нижней границы шапки */
@@ -462,25 +461,25 @@
         .modal-title { font-size: 24px; font-weight: bold; letter-spacing: 3px; text-transform: uppercase; color: #bc66ff; text-shadow: 0 0 10px rgba(188, 102, 255, 0.5); margin-bottom: 25px; }
         
         /* ОКНО ЦЕН, ИГР, АКЦИЙ И ПРО НАС */
-        .modal-box.prices-width, .modal-box.games-width, .modal-box.promos-width, .modal-box.about-width {
+        .modal-box.prices-width, .modal-box.games-width, .modal-box.promos-width, .modal-box.about-width, .modal-box.cesl-width {
             max-width: 750px;
             padding: 35px 25px 35px 35px;
         }
 
-        .prices-scroll-container, .games-scroll-container, .tournament-scroll-container, .promos-scroll-container, .about-scroll-container {
+        .prices-scroll-container, .games-scroll-container, .tournament-scroll-container, .promos-scroll-container, .about-scroll-container, .cesl-scroll-container {
             max-height: 65vh;
             overflow-y: auto;
             padding-right: 15px;
         }
 
         /* Общие стили скроллбаров внутри окон */
-        .prices-scroll-container::-webkit-scrollbar, .games-scroll-container::-webkit-scrollbar, .tournament-scroll-container::-webkit-scrollbar, .promos-scroll-container::-webkit-scrollbar, .about-scroll-container::-webkit-scrollbar {
+        .prices-scroll-container::-webkit-scrollbar, .games-scroll-container::-webkit-scrollbar, .tournament-scroll-container::-webkit-scrollbar, .promos-scroll-container::-webkit-scrollbar, .about-scroll-container::-webkit-scrollbar, .cesl-scroll-container::-webkit-scrollbar {
             width: 8px;
         }
-        .prices-scroll-container::-webkit-scrollbar-track, .games-scroll-container::-webkit-scrollbar-track, .tournament-scroll-container::-webkit-scrollbar-track, .promos-scroll-container::-webkit-scrollbar-track, .about-scroll-container::-webkit-scrollbar-track {
+        .prices-scroll-container::-webkit-scrollbar-track, .games-scroll-container::-webkit-scrollbar-track, .tournament-scroll-container::-webkit-scrollbar-track, .promos-scroll-container::-webkit-scrollbar-track, .about-scroll-container::-webkit-scrollbar-track, .cesl-scroll-container::-webkit-scrollbar-track {
             background: #140d24;
         }
-        .prices-scroll-container::-webkit-scrollbar-thumb, .games-scroll-container::-webkit-scrollbar-thumb, .tournament-scroll-container::-webkit-scrollbar-thumb, .promos-scroll-container::-webkit-scrollbar-thumb, .about-scroll-container::-webkit-scrollbar-thumb {
+        .prices-scroll-container::-webkit-scrollbar-thumb, .games-scroll-container::-webkit-scrollbar-thumb, .tournament-scroll-container::-webkit-scrollbar-thumb, .promos-scroll-container::-webkit-scrollbar-thumb, .about-scroll-container::-webkit-scrollbar-thumb, .cesl-scroll-container::-webkit-scrollbar-thumb {
             background: #9d00ff;
             border-radius: 4px;
             box-shadow: 0 0 10px #9d00ff;
@@ -535,9 +534,9 @@
         }
 
         /* Контакты и Про нас */
-        .contacts-list, .about-list { display: flex; flex-direction: column; gap: 20px; text-align: left; margin-top: 10px; }
-        .contact-item, .about-item { background: rgba(11, 5, 24, 0.6); border: 1px solid rgba(157, 0, 255, 0.3); border-radius: 8px; padding: 15px; transition: all 0.3s ease; }
-        .contact-item:hover, .about-item:hover { border-color: #bc66ff; box-shadow: 0 0 15px rgba(188, 102, 255, 0.2); background: rgba(20, 13, 36, 0.8); }
+        .contacts-list, .about-list, .cesl-list { display: flex; flex-direction: column; gap: 20px; text-align: left; margin-top: 10px; }
+        .contact-item, .about-item, .cesl-item { background: rgba(11, 5, 24, 0.6); border: 1px solid rgba(157, 0, 255, 0.3); border-radius: 8px; padding: 15px; transition: all 0.3s ease; }
+        .contact-item:hover, .about-item:hover, .cesl-item:hover { border-color: #bc66ff; box-shadow: 0 0 15px rgba(188, 102, 255, 0.2); background: rgba(20, 13, 36, 0.8); }
         .contact-label, .about-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #b0a2ca; margin-bottom: 5px; }
         .about-label-specs { font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; color: #bc66ff; margin-bottom: 10px; border-bottom: 1px solid rgba(157, 0, 255, 0.2); padding-bottom: 5px; }
         .contact-value, .about-value { font-size: 16px; font-weight: 500; color: #ffffff; text-decoration: none; transition: color 0.2s; line-height: 1.5; }
@@ -646,13 +645,13 @@
             /* Сам логотип */
             .logo img {
                 position: absolute;
-                top: -42px; /* Подняли еще выше (было -15px), теперь он сидит у самой кромки */
+                top: -42px; /* Подняли еще выше */
                 left: 50%;
                 transform: translateX(-50%); 
                 height: 125px; /* Логотип остается большим и сочным */
                 object-fit: contain;
                 z-index: 100;
-                pointer-events: none; /* КЛЮЧЕВОЙ ФИКС: клики проходят сквозь логотип на меню! */
+                pointer-events: none; /* клики проходят сквозь логотип на меню! */
             }
 
             nav {
@@ -701,9 +700,9 @@
             }
 
             .modal-box { padding: 30px 20px; max-width: 90%; }
-            .modal-box.prices-width, .modal-box.games-width, .modal-box.promos-width, .modal-box.about-width { max-width: 95%; padding: 20px 10px 20px 20px; }
+            .modal-box.prices-width, .modal-box.games-width, .modal-box.promos-width, .modal-box.about-width, .modal-box.cesl-width { max-width: 95%; padding: 20px 10px 20px 20px; }
             .games-grid { grid-template-columns: 1fr; gap: 15px; }
-            .prices-scroll-container, .games-scroll-container, .tournament-scroll-container, .promos-scroll-container, .about-scroll-container { max-height: 60vh; padding-right: 8px; }
+            .prices-scroll-container, .games-scroll-container, .tournament-scroll-container, .promos-scroll-container, .about-scroll-container, .cesl-scroll-container { max-height: 60vh; padding-right: 8px; }
             .specs-grid { grid-template-columns: 100px 1fr; font-size: 13px; }
 
             .dev-message { 
@@ -728,6 +727,7 @@
                 <li><button class="nav-link" onclick="openSection('Ціни')">Ціни</button></li>
                 <li><button class="nav-link" onclick="openSection('Акції')">Акції</button></li>
                 <li><button class="nav-link" onclick="openSection('Контакти')">Контакти</button></li>
+                <li><button class="nav-link" onclick="openSection('cesl')">cesl</button></li>
             </ul>
         </nav>
     </header>
@@ -751,6 +751,10 @@
         <div class="section-heading">Актуальні Турніри</div>
         <div class="tournament-banner-box">
             <img src="tournument.jpg" alt="Турніри кіберклубу Sector">
+        </div>
+        <!-- Новый баннер ночных турниров -->
+        <div class="tournament-banner-box" style="margin-top: 20px;">
+            <img src="tournumentnight.jpg" alt="Нічні турнири кіберклубу Sector">
         </div>
     </div>
 
@@ -816,7 +820,7 @@
                 <div class="about-list">
                     <div class="about-item">
                         <div class="about-label">Ласкаво просимо в SECTOR</div>
-                        <div class="about-value">Ми — сучасний кіберспортивний простір, створений геймерами для геймерів. Наша мета — надати найкращі умови для тренувань, відпочинку та командних батарей.</div>
+                        <div class="about-value">Ми — сучасний кіберспортивний простір, створений геймерами для геймерів. Наша мета — надати найкращие умови для тренувань, відпочинку та командних батарей.</div>
                     </div>
                     <div class="about-item">
                         <div class="about-label">Атмосфера та Комфорт</div>
@@ -881,12 +885,16 @@
             <div class="modal-title">Наші Контакти</div>
             <div class="contacts-list">
                 <div class="contact-item">
-                    <div class="contact-label">Телефон администратора</div>
-                    <a href="tel:+380939451862" class="contact-value">+380 (93) 945-18-62</a>
+                    <div class="contact-label">Телефон адміністратора</div>
+                    <a href="tel:+380939451862" class="contact-value">+380 (77) 115-13-13</a>
                 </div>
                 <div class="contact-item">
                     <div class="contact-label">Наш Telegram</div>
                     <a href="https://t.me/Sector_Samar" target="_blank" class="contact-value">@Sector_Samar</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">Наш Discord</div>
+                    <a href="https://discord.gg/ARKc4twV2" target="_blank" class="contact-value">Sector PC GamingLeag</a>
                 </div>
                 <div class="contact-item">
                     <div class="contact-label">Адреса клубу</div>
@@ -968,44 +976,28 @@
         </div>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО АКЦИЙ С ВНУТРЕННИМ СКРОЛЛОМ -->
+    <!-- МОДАЛЬНОЕ ОКНО АКЦИЙ С ВНУТРЕННИМ СКРОЛЛОМ (ТЕПЕРЬ С БАННЕРОМ) -->
     <div id="promos-modal" class="modal-back" onclick="togglePromosModal(false)">
         <div class="modal-box promos-width" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="togglePromosModal(false)">&times;</button>
-            <div class="modal-title">Accumulate та Пропозиції</div>
+            <div class="modal-title">Акції та Пропозиції</div>
             
             <div class="promos-scroll-container">
-                <div class="games-grid">
-                    <!-- Акция 1 -->
-                    <div class="game-category-card">
-                        <div class="category-card-title">Приведи друга</div>
-                        <p style="font-size: 14px; color: #cdcae0; line-height: 1.6; margin-top: 10px;">
-                            Приводь друга, який ще не грав у нашому клубі, та отримуйте по 1 безкоштовній годині на ігровий баланс!
-                        </p>
-                    </div>
+                <!-- Старый текст убран, вставлен баннер -->
+                <img src="akcii.jpg" alt="Акції кіберклубу Sector" class="price-banner-img">
+            </div>
+        </div>
+    </div>
 
-                    <!-- Акция 2 -->
-                    <div class="game-category-card">
-                        <div class="category-card-title">УБД</div>
-                        <p style="font-size: 14px; color: #cdcae0; line-height: 1.6; margin-top: 10px;">
-                            Знижка військовим на усе 10%.
-                        </p>
-                    </div>
-
-                    <!-- Акция 3 -->
-                    <div class="game-category-card">
-                        <div class="category-card-title">День Народження</div>
-                        <p style="font-size: 14px; color: #cdcae0; line-height: 1.6; margin-top: 10px;">
-                            Даруємо знижку 50% на будь-який пакет послуг у твій День народження та протягом 3-х днів після нього (за наявності паспорта або Дії).
-                        </p>
-                    </div>
-
-                    <!-- Акция 4 -->
-                    <div class="game-category-card">
-                        <div class="category-card-title">Ранковий Буст</div>
-                        <p style="font-size: 14px; color: #cdcae0; line-height: 1.6; margin-top: 10px;">
-                            Грай довше на початку дня: при оплаті 2-х годин гри у будь-якій зоні — 3-тя година у подарунок!
-                        </p>
+    <!-- МОДАЛЬНОЕ ОКНО CESL (С НЕОНОВОЙ НАДПИСЬЮ НЕЗАБАРОМ)[cite: 6] -->
+    <div id="cesl-modal" class="modal-back" onclick="toggleCeslModal(false)">
+        <div class="modal-box cesl-width" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="toggleCeslModal(false)">&times;</button>
+            <div class="modal-title">cesl</div>
+            <div class="cesl-scroll-container">
+                <div class="cesl-list">
+                    <div class="cesl-item" style="padding: 40px 20px; text-align: center;">
+                        <div class="dev-message" style="margin: 0; font-size: 38px;">Незабаром</div>
                     </div>
                 </div>
             </div>
@@ -1079,9 +1071,11 @@
                             <div class="select-wrapper">
                                 <select id="select-tournament" class="form-input" required onchange="handleTournamentFields(this.value)">
                                     <option value="" disabled selected hidden>Натисніть для вибору...</option>
-                                    <option value="CS 2 5x5 20.07.26">CS 2 5x5 20.07.26</option>
-                                    <option value="DOTA 2 5x5 20.07.26">DOTA 2 5x5 20.07.26</option>
-                                    <option value="FC 24 1x1 20.07.26">FC 24 1x1 20.07.26</option>
+                                    <option value="CS 2 5x5 20.07.26">CS 2 5x5 01.08.26</option>
+                                    <option value="DOTA 2 5x5 20.07.26">DOTA 2 5x5 01.08.26</option>
+                                    <!-- Новые ночные турниры -->
+                                    <option value="CS 2 1x1 night 01.08.26">CS 2 1x1 night 01.08.26</option>
+                                    <option value="DOTA 2 1x1 night 01.08.26">DOTA 2 1x1 night 01.08.26</option>
                                 </select>
                             </div>
                         </div>
@@ -1153,6 +1147,7 @@
         const pricesModal = document.getElementById('prices-modal');
         const gamesModal = document.getElementById('games-modal');
         const promosModal = document.getElementById('promos-modal');
+        const ceslModal = document.getElementById('cesl-modal');
         const tournamentModal = document.getElementById('tournament-modal');
 
         const formContainer = document.getElementById('booking-form-container');
@@ -1179,6 +1174,7 @@
             if (sectionName === 'Ціни') { togglePricesModal(true); return; }
             if (sectionName === 'Акції') { togglePromosModal(true); return; }
             if (sectionName === 'Контакти') { toggleContactsModal(true); return; }
+            if (sectionName === 'cesl') { toggleCeslModal(true); return; }
 
             if (currentActiveSection === sectionName) {
                 overlay.classList.remove('active');
@@ -1190,11 +1186,13 @@
             }
         }
 
+        // Включена прокрутка наверх при открытии модалок
         function toggleAboutModal(show) { show ? (aboutModal.classList.add('active'), document.querySelector('.about-scroll-container').scrollTop = 0) : aboutModal.classList.remove('active'); }
         function toggleContactsModal(show) { show ? contactsModal.classList.add('active') : contactsModal.classList.remove('active'); }
         function togglePricesModal(show) { show ? (pricesModal.classList.add('active'), document.querySelector('.prices-scroll-container').scrollTop = 0) : pricesModal.classList.remove('active'); }
         function toggleGamesModal(show) { show ? (gamesModal.classList.add('active'), document.querySelector('.games-scroll-container').scrollTop = 0) : gamesModal.classList.remove('active'); }
         function togglePromosModal(show) { show ? (promosModal.classList.add('active'), document.querySelector('.promos-scroll-container').scrollTop = 0) : promosModal.classList.remove('active'); }
+        function toggleCeslModal(show) { show ? (ceslModal.classList.add('active'), document.querySelector('.cesl-scroll-container').scrollTop = 0) : ceslModal.classList.remove('active'); }
 
         function toggleModal(show) {
             if (show) {
@@ -1350,6 +1348,7 @@
                 togglePricesModal(false);
                 toggleGamesModal(false);
                 togglePromosModal(false);
+                toggleCeslModal(false);
                 toggleTournamentModal(false);
                 overlay.classList.remove('active');
                 currentActiveSection = null;
@@ -1363,6 +1362,7 @@
             togglePricesModal(false);
             toggleGamesModal(false);
             togglePromosModal(false);
+            toggleCeslModal(false);
             toggleTournamentModal(false);
             currentActiveSection = null;        
             window.scrollTo({ top: 0, behavior: 'smooth' });
