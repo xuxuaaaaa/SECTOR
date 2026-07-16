@@ -287,7 +287,7 @@
             max-width: 1100px;
             width: 100%;
             margin: 0 auto;
-            padding: 60px 20px 100px 20px;
+            padding: 60px 20px 40px 20px;
             z-index: 5;
             position: relative;
             text-align: center;
@@ -391,6 +391,127 @@
         .spot-ps-2 { left: 40.7%; top: 58%; width: 6%; height: 3.5%; border-radius: 6px; background: rgba(157, 0, 255, 0.25); border: 1px solid #bc66ff; }
         .spot-ps-vip { left: 48.3%; top: 9%; width: 3.5%; height: 10%; border-radius: 6px; background: rgba(157, 0, 255, 0.25); border: 1px solid #bc66ff; }
         .spot-ps-1:hover, .spot-ps-2:hover, .spot-ps-vip:hover { background: #bc66ff; box-shadow: 0 0 15px #bc66ff, 0 0 5px #ffffff; }
+
+        /* --- СЕКЦИЯ БАННЕРОВ (АКЦИИ И ЦЕНЫ ПОД КАРТОЙ) --- */
+        .promo-price-banners-section {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px 20px 40px 20px; /* Уменьшен нижний отступ для плавного перехода к соц сетям */
+            z-index: 5;
+            position: relative;
+            text-align: center;
+        }
+
+        .banners-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .banner-card {
+            background: rgba(20, 13, 36, 0.6);
+            border: 2px solid rgba(157, 0, 255, 0.4);
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 0 30px rgba(157, 0, 255, 0.15);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            transition: transform 0.4s ease;
+        }
+
+        .banner-card:hover {
+            border-color: #bc66ff;
+            box-shadow: 0 0 35px rgba(188, 102, 255, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .banner-card:hover img {
+            transform: scale(1.02);
+        }
+
+        .banner-title-overlay {
+            margin-top: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #dfbfff;
+            text-shadow: 0 0 8px rgba(188, 102, 255, 0.6);
+            transition: color 0.3s;
+        }
+
+        .banner-card:hover .banner-title-overlay {
+            color: #ffffff;
+            text-shadow: 0 0 12px #bc66ff;
+        }
+
+        /* --- СЕКЦИЯ СОЦИАЛЬНЫХ СЕТЕЙ --- */
+        .socials-section {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px 20px 100px 20px;
+            z-index: 5;
+            position: relative;
+            text-align: center;
+        }
+
+        .socials-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(20, 13, 36, 0.6);
+            border: 2px solid rgba(157, 0, 255, 0.4);
+            color: #ffffff;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(157, 0, 255, 0.15);
+            transition: all 0.4s ease;
+        }
+
+        .social-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .social-btn:hover {
+            border-color: #bc66ff;
+            box-shadow: 0 0 30px rgba(188, 102, 255, 0.5);
+            transform: translateY(-3px);
+            color: #dfbfff;
+        }
+
+        .social-btn:hover svg {
+            transform: scale(1.15) rotate(5deg);
+        }
 
         /* --- МОДАЛЬНЫЕ ОКНА --- */
         .page-overlay {
@@ -681,6 +802,7 @@
                 padding-bottom: 60px;
             }
 
+            /* Все остальные стили из медиа-запроса оставляем без изменений */
             .hero-buttons { flex-direction: column; gap: 15px; width: 100%; max-width: 300px; }
             .main-title { font-size: 45px; }
             .sub-title { font-size: 16px; }
@@ -688,32 +810,37 @@
             .btn-book, .btn-tournament { padding: 15px 20px; font-size: 14px; width: 100%; }
             .scroll-down-indicator { display: none; }
             
-            /* --- ИСПРАВЛЕННАЯ СЕКЦИЯ КАРТЫ ДЛЯ ТЕЛЕФОНОВ --- */
-            .map-section { 
-                padding: 40px 10px; 
-                overflow-x: hidden; /* Полностью убираем боковой скролл на мобильных */
-            }
-            
+            .map-section { padding: 40px 10px 20px 10px; }
             .interactive-map-container { 
                 border-radius: 8px; 
-                width: 100%;       /* Карта сжимается под ширину экрана смартфона */
-                min-width: auto;   /* Сбрасываем старое ограничение ширины в 700px */
+                min-width: 700px; 
+            }
+            .map-section {
+                overflow-x: auto; 
+                -webkit-overflow-scrolling: touch;
             }
 
-            /* Увеличиваем размер точек (мест), чтобы на них было легче кликать пальцем */
-            .map-pc-spot {
-                width: 4.5% !important;  
-                height: 5.5% !important; 
+            .promo-price-banners-section {
+                padding: 10px 10px 20px 10px;
             }
 
-            /* Корректируем размеры для зон PS и VIP */
-            .spot-ps-1, .spot-ps-2 { 
-                width: 10% !important; 
-                height: 6% !important; 
+            .socials-section {
+                padding: 10px 10px 60px 10px;
             }
-            .spot-ps-vip { 
-                width: 7% !important; 
-                height: 14% !important; 
+
+            .socials-grid {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .social-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .banners-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
 
             .modal-box { padding: 30px 20px; max-width: 90%; }
@@ -741,8 +868,6 @@
             <ul>
                 <li><button class="nav-link" onclick="openSection('Про нас')">Про нас</button></li>
                 <li><button class="nav-link" onclick="openSection('Ігри')">Ігри</button></li>
-                <li><button class="nav-link" onclick="openSection('Ціни')">Ціни</button></li>
-                <li><button class="nav-link" onclick="openSection('Акції')">Акції</button></li>
                 <li><button class="nav-link" onclick="openSection('Контакти')">Контакти</button></li>
                 <li><button class="nav-link" onclick="openSection('cesl')">seactor leage</button></li>
             </ul>
@@ -782,7 +907,7 @@
     </div>
 
     <div class="map-section" id="club-map">
-        <div class="section-heading">Обери своє место в залі</div>
+        <div class="section-heading">Обери своє місце в залі</div>
         
         <div class="interactive-map-container">
             <!-- Места для GAMER ZONE -->
@@ -826,6 +951,51 @@
             <div class="map-pc-spot spot-ps-1" data-zone="PS ZONE" data-label="PS ZONE #1" onclick="bookSpecificSeat(this)"></div>
             <div class="map-pc-spot spot-ps-2" data-zone="PS VIP ZONE" data-label="PS ZONE #2" onclick="bookSpecificSeat(this)"></div>
             <div class="map-pc-spot spot-ps-vip" data-zone="PS VIP ZONE" data-label="PS VIP" onclick="bookSpecificSeat(this)"></div>
+        </div>
+    </div>
+
+    <!-- СЕКЦИЯ БАННЕРОВ ПОД КАРТОЙ -->
+    <div class="promo-price-banners-section">
+        <div class="section-heading">Акції та Ціни</div>
+        <div class="banners-grid">
+            <!-- Баннер акций -->
+            <div class="banner-card" onclick="togglePromosModal(true)">
+                <img src="akcii.jpg" alt="Акції кіберклубу Sector">
+                <div class="banner-title-overlay">Наші Акції</div>
+            </div>
+            <!-- Баннер цен -->
+            <div class="banner-card" onclick="togglePricesModal(true)">
+                <img src="price.jpg" alt="Прайс-лист кіберклубу Sector">
+                <div class="banner-title-overlay">Прайс-лист</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- СЕКЦИЯ СОЦИАЛЬНЫХ СЕТЕЙ -->
+    <div class="socials-section">
+        <div class="section-heading">Ми в соцмережах</div>
+        <div class="socials-grid">
+            <!-- Telegram -->
+            <a href="https://t.me/sectorsamar" target="_blank" class="social-btn">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.12.89-.7 4.31-.99 5.89-.12.67-.37.89-.61.92-.52.05-.91-.34-1.41-.67-.78-.51-1.22-.83-1.98-1.33-.87-.58-.3-1 .19-1.51.13-.13 2.34-2.14 2.38-2.32.01-.02.01-.11-.05-.16-.06-.05-.14-.03-.21-.02-.09.02-1.53.97-4.32 2.85-.41.28-.78.42-1.11.41-.36-.01-1.06-.2-1.58-.37-.64-.21-1.15-.32-1.1-.68.03-.19.28-.38.76-.58 2.97-1.29 4.95-2.14 5.94-2.56 2.82-1.18 3.4-1.39 3.79-1.39.08 0 .27.02.39.12.1.08.13.19.14.28-.01.06.01.13 0 .19z"/>
+                </svg>
+                Telegram
+            </a>
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/sector.club.samar?igsh=MWZ1ZW81b2s4MDhrbQ==" target="_blank" class="social-btn">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+                </svg>
+                Instagram
+            </a>
+            <!-- Discord -->
+            <a href="https://discord.gg/ARKc4twV2" target="_blank" class="social-btn">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.46-.63.87-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.094 13.094 0 0 1-1.873-.894.077.077 0 0 1-.008-.128c.126-.093.252-.19.372-.287a.075.075 0 0 1 .077-.011c3.92 1.793 8.18 1.793 12.061 0a.073.073 0 0 1 .078.009c.12.099.246.195.373.289a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.77 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.156 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.156 2.418z"/>
+                </svg>
+                Discord
+            </a>
         </div>
     </div>
 
@@ -917,7 +1087,7 @@
                 </div>
                 <div class="contact-item">
                     <div class="contact-label">Наш Telegram</div>
-                    <a href="https://t.me/Sector_Samar" target="_blank" class="contact-value">@Sector_Samar</a>
+                    <a href="https://t.me/sectorgamesamar" target="_blank" class="contact-value">@sectorgamesamar</a>
                 </div>
                 <div class="contact-item">
                     <div class="contact-label">Адреса клубу</div>
@@ -1006,7 +1176,7 @@
             <div class="modal-title">Акції та Пропозиції</div>
             
             <div class="promos-scroll-container">
-                <!-- Старый текст убран, вставлен баннер -->
+                <!-- Старый text убран, вставлен баннер -->
                 <img src="akcii.jpg" alt="Акції кіберклубу Sector" class="price-banner-img">
             </div>
         </div>
