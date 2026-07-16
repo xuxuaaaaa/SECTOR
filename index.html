@@ -681,7 +681,6 @@
                 padding-bottom: 60px;
             }
 
-            /* Все остальные стили из медиа-запроса оставляем без изменений */
             .hero-buttons { flex-direction: column; gap: 15px; width: 100%; max-width: 300px; }
             .main-title { font-size: 45px; }
             .sub-title { font-size: 16px; }
@@ -689,14 +688,32 @@
             .btn-book, .btn-tournament { padding: 15px 20px; font-size: 14px; width: 100%; }
             .scroll-down-indicator { display: none; }
             
-            .map-section { padding: 40px 10px; }
+            /* --- ИСПРАВЛЕННАЯ СЕКЦИЯ КАРТЫ ДЛЯ ТЕЛЕФОНОВ --- */
+            .map-section { 
+                padding: 40px 10px; 
+                overflow-x: hidden; /* Полностью убираем боковой скролл на мобильных */
+            }
+            
             .interactive-map-container { 
                 border-radius: 8px; 
-                min-width: 700px; 
+                width: 100%;       /* Карта сжимается под ширину экрана смартфона */
+                min-width: auto;   /* Сбрасываем старое ограничение ширины в 700px */
             }
-            .map-section {
-                overflow-x: auto; 
-                -webkit-overflow-scrolling: touch;
+
+            /* Увеличиваем размер точек (мест), чтобы на них было легче кликать пальцем */
+            .map-pc-spot {
+                width: 4.5% !important;  
+                height: 5.5% !important; 
+            }
+
+            /* Корректируем размеры для зон PS и VIP */
+            .spot-ps-1, .spot-ps-2 { 
+                width: 10% !important; 
+                height: 6% !important; 
+            }
+            .spot-ps-vip { 
+                width: 7% !important; 
+                height: 14% !important; 
             }
 
             .modal-box { padding: 30px 20px; max-width: 90%; }
@@ -727,7 +744,7 @@
                 <li><button class="nav-link" onclick="openSection('Ціни')">Ціни</button></li>
                 <li><button class="nav-link" onclick="openSection('Акції')">Акції</button></li>
                 <li><button class="nav-link" onclick="openSection('Контакти')">Контакти</button></li>
-                <li><button class="nav-link" onclick="openSection('cesl')">cesl</button></li>
+                <li><button class="nav-link" onclick="openSection('cesl')">seactor leage</button></li>
             </ul>
         </nav>
     </header>
@@ -738,7 +755,6 @@
         <p class="description">Топове залізо, кіберспортивна атмосфера та найкращі ігри 24/7</p>
         <div class="hero-buttons">
             <a href="#club-map" class="btn-book" style="text-decoration: none; display: inline-block; text-align: center;">Забронювати ПК</a>
-            <button class="btn-tournament" onclick="toggleTournamentModal(true)">Реєстрація на турнір</button>
         </div>
         
         <a href="#tournaments" class="scroll-down-indicator">
@@ -749,13 +765,20 @@
 
     <div class="tournament-section" id="tournaments">
         <div class="section-heading">Актуальні Турніри</div>
+        
+        <!-- Баннер дневных турниров -->
         <div class="tournament-banner-box">
             <img src="tournument.jpg" alt="Турніри кіберклубу Sector">
         </div>
+        <!-- Кнопка регистрации под дневным баннером -->
+        <button class="btn-tournament" style="margin-top: 15px; margin-bottom: 40px;" onclick="openFilteredTournament('day')">Реєстрація на денний турнір</button>
+
         <!-- Новый баннер ночных турниров -->
-        <div class="tournament-banner-box" style="margin-top: 20px;">
+        <div class="tournament-banner-box">
             <img src="tournumentnight.jpg" alt="Нічні турнири кіберклубу Sector">
         </div>
+        <!-- Кнопка регистрации под ночным баннером -->
+        <button class="btn-tournament" style="margin-top: 15px;" onclick="openFilteredTournament('night')">Реєстрація на нічний турнір</button>
     </div>
 
     <div class="map-section" id="club-map">
@@ -833,11 +856,11 @@
                         <div class="specs-grid">
                             <div class="spec-title">Процесор:</div><div class="spec-value">AMD Ryzen 5 5500</div>
                             <div class="spec-title">Відеокарта:</div><div class="spec-value">RTX 5060</div>
-                            <div class="spec-title">ОЗУ:</div><div class="spec-value">16 GB DDR4 (3200Mhz)</div>
                             <div class="spec-title">Монітор:</div><div class="spec-value">MSI MAG 242F (24/27", 200Hz, IPS, FULL HD)</div>
                             <div class="spec-title">Мишка:</div><div class="spec-value">Proove Gaming Jester 8K Black</div>
                             <div class="spec-title">Клавіатура:</div><div class="spec-value">Proove Gaming Slicker Special Edition BLACK / PURPLE (Бездротова)</div>
                             <div class="spec-title">Навушники:</div><div class="spec-value">Proove Gaming Rapture Black</div>
+                             <div class="spec-title">Крісло:</div><div class="spec-value">Proove Gaming Combo</div>
                         </div>
                     </div>
 
@@ -846,11 +869,11 @@
                         <div class="specs-grid">
                             <div class="spec-title">Процесор:</div><div class="spec-value">5500X3D</div>
                             <div class="spec-title">Відеокарта:</div><div class="spec-value">RTX 5060</div>
-                            <div class="spec-title">ОЗУ:</div><div class="spec-value">DDR4 16 GB (можливе збільшення до 32 GB)</div>
                             <div class="spec-title">Монітор:</div><div class="spec-value">Acer 27" VG272UW2bmiipx (IPS, Black, 240Hz)</div>
                             <div class="spec-title">Мишка:</div><div class="spec-value">Proove Gaming Jester 8K</div>
                             <div class="spec-title">Клавіатура:</div><div class="spec-value">Proove Gaming Slicker PRO Black/Purple (Бездротова)</div>
                             <div class="spec-title">Навушники:</div><div class="spec-value">Proove Gaming Rapture</div>
+                            <div class="spec-title">Крісло:</div><div class="spec-value">Proove Gaming Warrior</div>
                         </div>
                     </div>
 
@@ -859,8 +882,10 @@
                         <div class="specs-grid">
                             <div class="spec-title">Процесор:</div><div class="spec-value">AMD Ryzen 5 7500X3D</div>
                             <div class="spec-title">Відеокарта:</div><div class="spec-value">5060 TI 8 GB</div>
-                            <div class="spec-title">ОЗУ:</div><div class="spec-value">DDR5 16GB (можливе збільшення до 32 GB)</div>
                             <div class="spec-title">Монітор:</div><div class="spec-value">Acer Predator XB253QFbmiiprx (24", 300Hz, IPS)</div>
+                            <div class="spec-title">Клавіатура:</div><div class="spec-value">Proove Gaming Slicker PRO Black/Purple (Бездротова)</div>
+                            <div class="spec-title">Навушники:</div><div class="spec-value">Proove Gaming Rapture</div>
+                            <div class="spec-title">Крісло:</div><div class="spec-value">Proove Gaming Warrior</div>
                         </div>
                     </div>
 
@@ -869,8 +894,10 @@
                         <div class="specs-grid">
                             <div class="spec-title">Процесор:</div><div class="spec-value">R7 7700</div>
                             <div class="spec-title">Відеокарта:</div><div class="spec-value">RTX 5070</div>
-                            <div class="spec-title">ОЗУ:</div><div class="spec-value">DDR5 32 GB</div>
                             <div class="spec-title">Монітор:</div><div class="spec-value">Acer Nitro XF273UF3bmiiprx (27", 300Hz, IPS)</div>
+                            <div class="spec-title">Клавіатура:</div><div class="spec-value">Proove Gaming Slicker PRO Black/Purple (Бездротова)</div>
+                            <div class="spec-title">Навушники:</div><div class="spec-value">Proove Gaming Rapture</div>
+                            <div class="spec-title">Крісло:</div><div class="spec-value">Proove Gaming Warrior</div>
                         </div>
                     </div>
                 </div>
@@ -891,10 +918,6 @@
                 <div class="contact-item">
                     <div class="contact-label">Наш Telegram</div>
                     <a href="https://t.me/Sector_Samar" target="_blank" class="contact-value">@Sector_Samar</a>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-label">Наш Discord</div>
-                    <a href="https://discord.gg/ARKc4twV2" target="_blank" class="contact-value">Sector PC GamingLeag</a>
                 </div>
                 <div class="contact-item">
                     <div class="contact-label">Адреса клубу</div>
@@ -989,11 +1012,11 @@
         </div>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО CESL (С НЕОНОВОЙ НАДПИСЬЮ НЕЗАБАРОМ)[cite: 6] -->
+    <!-- МОДАЛЬНОЕ ОКНО CESL (С НЕОНОВОЙ НАДПИСЬЮ НЕЗАБАРОМ) -->
     <div id="cesl-modal" class="modal-back" onclick="toggleCeslModal(false)">
         <div class="modal-box cesl-width" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="toggleCeslModal(false)">&times;</button>
-            <div class="modal-title">cesl</div>
+            <div class="modal-title">seactor leage</div>
             <div class="cesl-scroll-container">
                 <div class="cesl-list">
                     <div class="cesl-item" style="padding: 40px 20px; text-align: center;">
@@ -1071,11 +1094,7 @@
                             <div class="select-wrapper">
                                 <select id="select-tournament" class="form-input" required onchange="handleTournamentFields(this.value)">
                                     <option value="" disabled selected hidden>Натисніть для вибору...</option>
-                                    <option value="CS 2 5x5 20.07.26">CS 2 5x5 01.08.26</option>
-                                    <option value="DOTA 2 5x5 20.07.26">DOTA 2 5x5 01.08.26</option>
-                                    <!-- Новые ночные турниры -->
-                                    <option value="CS 2 1x1 night 01.08.26">CS 2 1x1 night 01.08.26</option>
-                                    <option value="DOTA 2 1x1 night 01.08.26">DOTA 2 1x1 night 01.08.26</option>
+                                    <!-- Опции будут динамически добавляться через JS -->
                                 </select>
                             </div>
                         </div>
@@ -1222,6 +1241,27 @@
                 document.querySelector('.tournament-scroll-container').scrollTop = 0;
             } else {
                 tournamentModal.classList.remove('active');
+            }
+        }
+
+        // Фильтрация и открытие модального окна для разных турниров
+        function openFilteredTournament(type) {
+            toggleTournamentModal(true);
+            const selectElement = document.getElementById('select-tournament');
+            
+            // Очищаем старые опции и добавляем дефолтную
+            selectElement.innerHTML = '<option value="" disabled selected hidden>Натисніть для вибору...</option>';
+            
+            if (type === 'day') {
+                selectElement.innerHTML += `
+                    <option value="CS 2 5x5 01.08.26">CS 2 5x5 01.08.26</option>
+                    <option value="DOTA 2 5x5 01.08.26">DOTA 2 5x5 01.08.26</option>
+                `;
+            } else if (type === 'night') {
+                selectElement.innerHTML += `
+                    <option value="CS 2 1x1 night 01.08.26">CS 2 1x1 night 01.08.26</option>
+                    <option value="DOTA 2 1x1 night 01.08.26">DOTA 2 1x1 night 01.08.26</option>
+                `;
             }
         }
 
