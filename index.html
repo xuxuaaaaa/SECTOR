@@ -810,14 +810,15 @@
             .btn-book, .btn-tournament { padding: 15px 20px; font-size: 14px; width: 100%; }
             .scroll-down-indicator { display: none; }
             
-            .map-section { padding: 40px 10px 20px 10px; }
+            /* --- ТЕПЕРЬ КАРТА АДАПТИРУЕТСЯ И ВМЕЩАЕТСЯ НА ЭКРАН ТЕЛЕФОНА --- */
+            .map-section { 
+                padding: 40px 10px 20px 10px; 
+                overflow-x: hidden; /* Отключаем боковой скролл */
+            }
             .interactive-map-container { 
                 border-radius: 8px; 
-                min-width: 700px; 
-            }
-            .map-section {
-                overflow-x: auto; 
-                -webkit-overflow-scrolling: touch;
+                width: 100%; /* Карта заполнит доступную ширину */
+                max-width: 100%; /* Больше не растягивает экран */
             }
 
             .promo-price-banners-section {
