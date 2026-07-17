@@ -173,7 +173,7 @@
             align-items: center;
         }
 
-        .btn-book, .btn-price-hero, .btn-tournament {
+        .btn-book, .btn-price-hero, .btn-tournament, .btn-hardware-hero {
             background: transparent;
             border: 2px solid #9d00ff;
             color: #ffffff;
@@ -195,12 +195,17 @@
             box-shadow: inset 0 0 10px rgba(188, 102, 255, 0.4), 0 0 15px rgba(188, 102, 255, 0.3);
         }
 
+        .btn-hardware-hero {
+            border-color: #bc66ff;
+            box-shadow: inset 0 0 10px rgba(188, 102, 255, 0.4), 0 0 15px rgba(188, 102, 255, 0.3);
+        }
+
         .btn-tournament {
             border-color: #bc66ff;
             box-shadow: inset 0 0 10px rgba(188, 102, 255, 0.4), 0 0 15px rgba(188, 102, 255, 0.3);
         }
 
-        .btn-book:hover, .btn-price-hero:hover, .btn-tournament:hover {
+        .btn-book:hover, .btn-price-hero:hover, .btn-tournament:hover, .btn-hardware-hero:hover {
             color: #ffffff;
             box-shadow: inset 0 0 20px rgba(157, 0, 255, 0.6), 0 0 30px rgba(157, 0, 255, 0.8);
             text-shadow: 0 0 8px #ffffff;
@@ -209,6 +214,7 @@
 
         .btn-book:hover { border-color: #bc66ff; }
         .btn-price-hero:hover { border-color: #ffffff; }
+        .btn-hardware-hero:hover { border-color: #ffffff; }
         .btn-tournament:hover { border-color: #ffffff; }
 
         /* Индикатор скролла */
@@ -813,7 +819,7 @@
             .main-title { font-size: 45px; }
             .sub-title { font-size: 16px; }
             .description { font-size: 13px; margin-bottom: 30px; }
-            .btn-book, .btn-price-hero, .btn-tournament { padding: 15px 20px; font-size: 14px; width: 100%; }
+            .btn-book, .btn-price-hero, .btn-tournament, .btn-hardware-hero { padding: 15px 20px; font-size: 14px; width: 100%; }
             .scroll-down-indicator { display: none; }
             
             /* --- ТЕПЕРЬ КАРТА АДАПТИРУЕТСЯ И ВМЕЩАЕТСЯ НА ЭКРАН ТЕЛЕФОНА --- */
@@ -874,7 +880,6 @@
         <nav>
             <ul>
                 <li><button class="nav-link" onclick="openSection('Про нас')">Про нас</button></li>
-                <li><button class="nav-link" onclick="openSection('Залізо')">Залізо</button></li>
                 <li><button class="nav-link" onclick="openSection('Ігри')">Ігри</button></li>
                 <li><button class="nav-link" onclick="openSection('Контакти')">Контакти</button></li>
                 <li><button class="nav-link" onclick="openSection('cesl')">seactor League</button></li>
@@ -889,6 +894,7 @@
         <div class="hero-buttons">
             <a href="#club-map" class="btn-book" style="text-decoration: none; display: inline-block; text-align: center;">Забронювати ПК</a>
             <a href="#promo-prices" class="btn-price-hero" style="text-decoration: none; display: inline-block; text-align: center;">Прайс лист</a>
+            <button class="btn-hardware-hero" onclick="toggleHardwareModal(true)">Залізо</button>
         </div>
         
         <a href="#tournaments" class="scroll-down-indicator">
