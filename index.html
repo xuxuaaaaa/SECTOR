@@ -14,7 +14,7 @@
 
         body {
             background-color: #0b0518;
-            background-image: linear-gradient(rgba(11, 5, 24, 0.4), rgba(11, 5, 24, 0.7)), url('background.jpg');
+            background-image: linear-gradient(rgba(11, 5, 24, 0.4), rgba(11, 5, 24, 0.7)), url('background.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -748,7 +748,7 @@
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         @keyframes pulse { 0% { transform: scale(1); text-shadow: 0 0 15px #9d00ff; } 50% { transform: scale(1.03); text-shadow: 0 0 25px #bc66ff, 0 0 10px #ffffff; } 100% { transform: scale(1); text-shadow: 0 0 15px #9d00ff; } }
 
-       @media (max-width: 768px) {
+    @media (max-width: 768px) {
             header { 
                 padding: 0 15px; 
                 flex-direction: column; 
@@ -908,21 +908,21 @@
         
         <!-- Баннер дневных турниров -->
         <div class="tournament-banner-box">
-            <img src="tournument.jpg" alt="Турніри кіберклубу Sector">
+            <img src="tournument.png" alt="Турніри кіберклубу Sector">
         </div>
         <!-- Кнопка регистрации под дневным баннером -->
         <button class="btn-tournament" style="margin-top: 15px; margin-bottom: 40px;" onclick="openFilteredTournament('day')">Реєстрація на денний турнір</button>
 
         <!-- Новый баннер ночных турниров -->
         <div class="tournament-banner-box">
-            <img src="tournumentnight.jpg" alt="Нічні турнири кіберклубу Sector">
+            <img src="tournumentnight.png" alt="Нічні турнири кіберклубу Sector">
         </div>
         <!-- Кнопка регистрации под ночным баннером -->
         <button class="btn-tournament" style="margin-top: 15px;" onclick="openFilteredTournament('night')">Реєстрація на нічний турнір</button>
     </div>
 
     <div class="map-section" id="club-map">
-        <div class="section-heading">Обери своє место в залі</div>
+        <div class="section-heading">Обери своє місце в залі</div>
         
         <div class="interactive-map-container">
             <!-- Места для GAMER ZONE -->
@@ -1211,17 +1211,13 @@
         </div>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО CESL (С НЕОНОВОЙ НАДПИСЬЮ НЕЗАБАРОМ) -->
+    <!-- МОДАЛЬНОЕ ОКНО CESL (З БАННЕРОМ COMING SOON) -->
     <div id="cesl-modal" class="modal-back" onclick="toggleCeslModal(false)">
         <div class="modal-box cesl-width" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="toggleCeslModal(false)">&times;</button>
             <div class="modal-title">seactor League</div>
             <div class="cesl-scroll-container">
-                <div class="cesl-list">
-                    <div class="cesl-item" style="padding: 40px 20px; text-align: center;">
-                        <div class="dev-message" style="margin: 0; font-size: 38px;">Незабаром</div>
-                    </div>
-                </div>
+                <img src="coming.png" alt="SECTOR League Coming Soon" class="price-banner-img">
             </div>
         </div>
     </div>
